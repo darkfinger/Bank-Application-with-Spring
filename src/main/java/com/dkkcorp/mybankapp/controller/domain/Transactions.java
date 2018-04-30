@@ -4,15 +4,16 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.util.Date;
 
 @Entity
-public class UserAddress {
+public class Transactions {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String country;
-    private String city;
-    private String street;
-    private String number;
-    private String zipCode;
+    private Account fromAccount;
+    private Account toAccount;
+    private Date dateOfTransaction;
+    private Float amount;
 }
