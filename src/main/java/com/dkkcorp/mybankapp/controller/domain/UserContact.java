@@ -1,11 +1,9 @@
 package com.dkkcorp.mybankapp.controller.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
+import lombok.Data;
 
-import org.springframework.data.annotation.Id;
-
+import javax.persistence.*;
+@Data
 @Entity
 public class UserContact {
     @Id
@@ -13,4 +11,6 @@ public class UserContact {
     private Long id;
     private TypeContact typeContact;
     private Integer ContactNumber;
+    @ManyToOne
+    private User user;
 }
