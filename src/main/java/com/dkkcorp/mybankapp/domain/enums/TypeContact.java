@@ -1,4 +1,4 @@
-package com.dkkcorp.mybankapp.controller.domain;
+package com.dkkcorp.mybankapp.domain.enums;
 
 public enum TypeContact {
     DOMICILE,WORK,MOBILE
