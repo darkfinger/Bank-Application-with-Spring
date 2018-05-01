@@ -10,7 +10,7 @@ import javax.validation.constraints.Size;
 
 @Data
 @Entity
-class Account {
+public class Account {
 
     @Id
     @NotNull
