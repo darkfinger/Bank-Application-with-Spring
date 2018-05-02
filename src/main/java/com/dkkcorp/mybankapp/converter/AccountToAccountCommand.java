@@ -8,7 +8,7 @@ import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
 
 @Component
-public class AcountToAccountCommand implements Converter<Account,AccountCommand> {
+public class AccountToAccountCommand implements Converter<Account,AccountCommand> {
 
     @Synchronized
     @Nullable
