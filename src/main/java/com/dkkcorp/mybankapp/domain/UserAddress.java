@@ -12,19 +12,10 @@ public class UserAddress {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @NotNull
-    @Size(max = 100)
     private String country;
-    @NotNull
-    @Size(max = 100)
     private String city;
-    @NotNull
-    @Size(max = 100)
     private String street;
-    @Size(max = 100)
     private String number;
-    @Size(max = 32)
-    @NotNull
     private String zipCode;
     @ManyToOne
     private User user;

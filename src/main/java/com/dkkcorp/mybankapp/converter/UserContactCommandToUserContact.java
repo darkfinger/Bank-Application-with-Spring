@@ -1,8 +1,9 @@
 package com.dkkcorp.mybankapp.converter;
 
 import com.dkkcorp.mybankapp.command.UserContactCommand;
+import com.dkkcorp.mybankapp.domain.User;
 import com.dkkcorp.mybankapp.domain.UserContact;
-import jdk.internal.jline.internal.Nullable;
+import org.springframework.lang.Nullable;
 import lombok.Synchronized;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
@@ -21,7 +22,9 @@ public class UserContactCommandToUserContact implements Converter<UserContactCom
         userContact.setContactNumber(source.getContactNumber());
         userContact.setId(source.getId());
         userContact.setTypeContact(source.getTypeContact());
-        userContact.getUser().setId(source.getId());
+        User user=new User();
+        user.setId(source.getUserId());
+        userContact.setUser(user);
         return userContact;
     }
 }

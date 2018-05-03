@@ -1,10 +1,9 @@
 package com.dkkcorp.mybankapp.converter;
 
 import com.dkkcorp.mybankapp.command.UserAddressCommand;
-import com.dkkcorp.mybankapp.command.UserContactCommand;
+import com.dkkcorp.mybankapp.domain.User;
 import com.dkkcorp.mybankapp.domain.UserAddress;
-import com.dkkcorp.mybankapp.domain.UserContact;
-import jdk.internal.jline.internal.Nullable;
+import org.springframework.lang.Nullable;
 import lombok.Synchronized;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
@@ -26,7 +25,9 @@ public class UserAddressCommandToUserAddress implements Converter<UserAddressCom
         userAddress.setId(source.getId());
         userAddress.setNumber(source.getNumber());
         userAddress.setStreet(source.getStreet());
-        userAddress.getUser().setId(source.getUserId());
+        User user=new User();
+        user.setId(source.getUserId());
+        userAddress.setUser(user);
         userAddress.setZipCode(source.getZipCode());
         return userAddress;
     }

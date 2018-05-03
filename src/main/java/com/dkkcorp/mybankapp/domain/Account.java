@@ -13,14 +13,11 @@ import javax.validation.constraints.Size;
 public class Account {
 
     @Id
-    @NotNull
-    @Size(min = 8,max = 20)
     private Long accountNo;
 
     @Enumerated(EnumType.STRING)
     private AccountType accountType;
 
-    @Size(max = 15)
     private Float balance;
     @ManyToOne
     private User user;

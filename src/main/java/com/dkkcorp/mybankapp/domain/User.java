@@ -25,35 +25,29 @@ public class User {
     private Long id;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     private List<Account> account=new ArrayList<>();
-
-    @NotNull
-    @Size(max = 65)
-    @Column(name = "first_name")
     private String firstName;
-    @NotNull
-    @Size(max = 65)
-    @Column(name = "last_name")
     private String lastName;
-    @NotNull
-    @Email
-    @Size(max = 100)
-    @Column(unique = true)
     private String email;
-    @NotNull
-    @Size(min = 8,max = 128)
     private String password;
-    @NotNull
-    @Size(min = 4,max = 12)
     private Integer pin;
-    @NotNull
-    @Temporal(TemporalType.DATE)
     private Date dateOfBirth;
     @CreationTimestamp
-    @Temporal(TemporalType.DATE)
     private Date dateOfSubscription;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     private List<UserAddress> userAddress=new ArrayList<>();
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     private List<UserContact> userContact=new ArrayList<>();
 
+    public void addAccount(Account account){
+        this.getAccount().add(account);
+        account.setUser(this);
+    }
+    public void addAddress(UserAddress userAddress){
+        this.getUserAddress().add(userAddress);
+        userAddress.setUser(this);
+    }
+    public void addAcontact(UserContact userContact){
+        this.getUserContact().add(userContact);
+        userContact.setUser(this);
+    }
 }

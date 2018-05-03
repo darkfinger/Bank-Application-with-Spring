@@ -36,9 +36,9 @@ public class UserCommandToUser implements Converter<UserCommand, User> {
         user.setPin(source.getPin());
         user.setDateOfBirth(source.getDateOfBirth());
         user.setDateOfSubscription(source.getDateOfSubscription());
-        source.getAccount().forEach(accountCommand -> user.getAccount().add(accountCommandToAccount.convert(accountCommand)));
-        source.getUserAddress().forEach(userAddressCommand -> user.getUserAddress().add(userAddressCommandToUserAddress.convert(userAddressCommand)));
-        source.getUserContact().forEach(userContactCommand -> user.getUserContact().add(userContactCommandToUserContact.convert(userContactCommand)));
+        source.getAccount().forEach(accountCommand -> user.addAccount(accountCommandToAccount.convert(accountCommand)));
+        source.getUserAddress().forEach(userAddressCommand -> user.addAddress(userAddressCommandToUserAddress.convert(userAddressCommand)));
+        source.getUserContact().forEach(userContactCommand -> user.addAcontact(userContactCommandToUserContact.convert(userContactCommand)));
 
         return user;
     }

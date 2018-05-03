@@ -2,7 +2,7 @@ package com.dkkcorp.mybankapp.converter;
 
 import com.dkkcorp.mybankapp.command.TransactionsCommand;
 import com.dkkcorp.mybankapp.domain.Transactions;
-import jdk.internal.jline.internal.Nullable;
+import org.springframework.lang.Nullable;
 import lombok.Synchronized;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;

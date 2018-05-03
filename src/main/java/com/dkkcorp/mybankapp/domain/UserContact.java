@@ -14,8 +14,7 @@ public class UserContact {
     private Long id;
     @Enumerated(EnumType.STRING)
     private TypeContact typeContact;
-    @Size(max = 15)
-    private Integer ContactNumber;
+    private Long ContactNumber;
     @ManyToOne
     private User user;
 }
