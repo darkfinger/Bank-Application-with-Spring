@@ -3,20 +3,22 @@ package com.dkkcorp.mybankapp.converter;
 import com.dkkcorp.mybankapp.command.UserAdminCommand;
 import com.dkkcorp.mybankapp.domain.UserAdmin;
 import org.springframework.lang.Nullable;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 import lombok.Synchronized;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
 
 @Component
-@NoArgsConstructor
-@AllArgsConstructor
 public class UserAdminCommandToUserAdmin implements Converter<UserAdminCommand,UserAdmin> {
 
     AccountCommandToAccount accountCommandToAccount;
     UserAddressCommandToUserAddress userAddressCommandToUserAddress;
     UserContactCommandToUserContact userContactCommandToUserContact;
+
+    public UserAdminCommandToUserAdmin(AccountCommandToAccount accountCommandToAccount, UserAddressCommandToUserAddress userAddressCommandToUserAddress, UserContactCommandToUserContact userContactCommandToUserContact) {
+        this.accountCommandToAccount = accountCommandToAccount;
+        this.userAddressCommandToUserAddress = userAddressCommandToUserAddress;
+        this.userContactCommandToUserContact = userContactCommandToUserContact;
+    }
 
     @Synchronized
     @Nullable

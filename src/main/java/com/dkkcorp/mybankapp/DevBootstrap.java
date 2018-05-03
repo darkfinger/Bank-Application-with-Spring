@@ -4,10 +4,7 @@ import com.dkkcorp.mybankapp.command.*;
 import com.dkkcorp.mybankapp.domain.enums.AccountType;
 import com.dkkcorp.mybankapp.domain.enums.Positions;
 import com.dkkcorp.mybankapp.domain.enums.TypeContact;
-import com.dkkcorp.mybankapp.service.AccountService;
-import com.dkkcorp.mybankapp.service.UserAddressService;
-import com.dkkcorp.mybankapp.service.UserContactService;
-import com.dkkcorp.mybankapp.service.UserService;
+import com.dkkcorp.mybankapp.service.*;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import org.springframework.context.ApplicationListener;
@@ -23,6 +20,7 @@ import java.util.Date;
 public class DevBootstrap implements ApplicationListener<ContextRefreshedEvent> {
 
     UserService userService;
+    UserAdminService userAdminService;
     AccountService accountService;
     UserAddressService userAddressService;
     UserContactService userContactService;
@@ -70,7 +68,7 @@ public class DevBootstrap implements ApplicationListener<ContextRefreshedEvent> 
         user1.setFirstName("root");
         user1.setLastName("sample");
         user1.setEmail("dav@gm.com");
-        user1.setAdminPassword("123456789");
+        user1.setPassword("123456789");
         user1.setPin(1234);
         user1.setDateOfBirth(new Date());
         user1.setDateOfSubscription(java.sql.Date.valueOf(LocalDate.now()));
