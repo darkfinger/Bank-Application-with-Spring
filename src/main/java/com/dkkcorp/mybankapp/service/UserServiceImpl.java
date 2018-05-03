@@ -24,7 +24,6 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserCommand saveUser(UserCommand userCommand) {
-//        System.out.println(userCommand.getAccount().get(0).getAccountNo()+"*******************************************************************");
         User user=userCommandToUser.convert(userCommand);
 
         user=userRepository.save(user);
