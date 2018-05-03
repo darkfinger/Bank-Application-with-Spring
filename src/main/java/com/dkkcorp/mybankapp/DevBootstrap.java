@@ -25,8 +25,9 @@ public class DevBootstrap implements ApplicationListener<ContextRefreshedEvent> 
     UserAddressService userAddressService;
     UserContactService userContactService;
 
-    public DevBootstrap(UserService userService, AccountService accountService, UserAddressService userAddressService, UserContactService userContactService) {
+    public DevBootstrap(UserService userService, UserAdminService userAdminService, AccountService accountService, UserAddressService userAddressService, UserContactService userContactService) {
         this.userService = userService;
+        this.userAdminService = userAdminService;
         this.accountService = accountService;
         this.userAddressService = userAddressService;
         this.userContactService = userContactService;
@@ -34,13 +35,13 @@ public class DevBootstrap implements ApplicationListener<ContextRefreshedEvent> 
 
     @Override
     public void onApplicationEvent(ContextRefreshedEvent event) {
-        UserCommand userCommand=init();
+        UserAdminCommand userCommand=init();
         System.out.println("Return of ini : "+userCommand.getAccount()+"*******************************************************************");
-        UserCommand userSaved =userService.saveUser(userCommand);
+        UserCommand userSaved =userAdminService.saveAdmin(userCommand);
         System.out.println(userSaved.getAccount()+"*******************************************************************");
     }
 
-    private UserCommand init(){
+    private UserAdminCommand init(){
         //setting Address
         UserAddressCommand userAddressCommand=new UserAddressCommand();
         userAddressCommand.setCountry("Canada");
