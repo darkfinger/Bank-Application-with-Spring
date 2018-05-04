@@ -14,7 +14,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class TransactionToTransactionCommand implements Converter<Transactions,TransactionsCommand> {
 
-    AccountToAccountCommand accountToAccountCommand;
+    private AccountToAccountCommand accountToAccountCommand;
 
     @Synchronized
     @Nullable

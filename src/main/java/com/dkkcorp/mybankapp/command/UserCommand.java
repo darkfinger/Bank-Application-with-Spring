@@ -1,7 +1,5 @@
 package com.dkkcorp.mybankapp.command;
 
-import com.dkkcorp.mybankapp.domain.UserAddress;
-import com.dkkcorp.mybankapp.domain.UserContact;
 import lombok.*;
 
 import javax.persistence.Temporal;

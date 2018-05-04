@@ -13,14 +13,12 @@ import java.util.Optional;
 
 @Service
 public class UserAdminServiceImpl implements UserAdminService {
-    AdminRepository adminRepository;
-    UserService userService;
-    AdminToAdminCommand adminToAdminCommand;
-    AdminCommandToAdmin adminCommandToAdmin;
+    private AdminRepository adminRepository;
+    private AdminToAdminCommand adminToAdminCommand;
+    private AdminCommandToAdmin adminCommandToAdmin;
 
-    public UserAdminServiceImpl(AdminRepository adminRepository, UserService userRepository, AdminToAdminCommand adminToAdminCommand, AdminCommandToAdmin adminCommandToAdmin) {
+    public UserAdminServiceImpl(AdminRepository adminRepository, AdminToAdminCommand adminToAdminCommand, AdminCommandToAdmin adminCommandToAdmin) {
         this.adminRepository = adminRepository;
-        this.userService = userRepository;
         this.adminToAdminCommand = adminToAdminCommand;
         this.adminCommandToAdmin = adminCommandToAdmin;
     }
@@ -41,8 +39,7 @@ public class UserAdminServiceImpl implements UserAdminService {
         if(!userAdminOptional.isPresent()){
             throw new RuntimeException("No admin found with this id : "+id);
         }
-        AdminCommand adminCommandFound = adminToAdminCommand.convert(userAdminOptional.get());
-        return adminCommandFound;
+        return adminToAdminCommand.convert(userAdminOptional.get());
     }
 
     @Override

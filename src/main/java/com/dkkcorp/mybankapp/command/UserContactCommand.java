@@ -1,8 +1,6 @@
 package com.dkkcorp.mybankapp.command;
 
-import com.dkkcorp.mybankapp.domain.User;
 import com.dkkcorp.mybankapp.domain.enums.TypeContact;
-import lombok.Data;
 import lombok.*;
 
 import javax.validation.constraints.Size;

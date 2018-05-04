@@ -4,7 +4,6 @@ import com.dkkcorp.mybankapp.domain.enums.TypeContact;
 import lombok.Data;
 
 import javax.persistence.*;
-import javax.validation.constraints.Size;
 
 @Data
 @Entity

@@ -10,16 +10,6 @@ import org.springframework.stereotype.Component;
 @Component
 public class AdminCommandToAdmin implements Converter<AdminCommand,Admin> {
 
-    AccountCommandToAccount accountCommandToAccount;
-    UserAddressCommandToUserAddress userAddressCommandToUserAddress;
-    UserContactCommandToUserContact userContactCommandToUserContact;
-
-    public AdminCommandToAdmin(AccountCommandToAccount accountCommandToAccount, UserAddressCommandToUserAddress userAddressCommandToUserAddress, UserContactCommandToUserContact userContactCommandToUserContact) {
-        this.accountCommandToAccount = accountCommandToAccount;
-        this.userAddressCommandToUserAddress = userAddressCommandToUserAddress;
-        this.userContactCommandToUserContact = userContactCommandToUserContact;
-    }
-
     @Synchronized
     @Nullable
     @Override

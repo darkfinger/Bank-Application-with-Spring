@@ -5,8 +5,6 @@ import com.dkkcorp.mybankapp.converter.UserCommandToUser;
 import com.dkkcorp.mybankapp.converter.UserToUserCommand;
 import com.dkkcorp.mybankapp.domain.User;
 import com.dkkcorp.mybankapp.repository.UserRepository;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -16,9 +14,9 @@ import java.util.Optional;
 @Service
 public class UserServiceImpl implements UserService {
 
-    UserRepository userRepository;
-    UserCommandToUser userCommandToUser;
-    UserToUserCommand userToUserCommand;
+    private UserRepository userRepository;
+    private UserCommandToUser userCommandToUser;
+    private UserToUserCommand userToUserCommand;
 
     public UserServiceImpl(UserRepository userRepository, UserCommandToUser userCommandToUser, UserToUserCommand userToUserCommand) {
         this.userRepository = userRepository;
@@ -32,8 +30,7 @@ public class UserServiceImpl implements UserService {
         if(!userOptional.isPresent()){
             throw new RuntimeException("No user found with id : "+id);
         }
-        final UserCommand user=userToUserCommand.convert(userOptional.get());
-        return user;
+        return userToUserCommand.convert(userOptional.get());
     }
 
     @Override
@@ -57,5 +54,4 @@ public class UserServiceImpl implements UserService {
     public void deleteUser(Long id) {
         userRepository.deleteById(id);
     }
-
 }

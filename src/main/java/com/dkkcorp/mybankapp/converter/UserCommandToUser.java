@@ -10,9 +10,9 @@ import org.springframework.stereotype.Component;
 @Component
 public class UserCommandToUser implements Converter<UserCommand, User> {
 
-    AccountCommandToAccount accountCommandToAccount;
-    UserAddressCommandToUserAddress userAddressCommandToUserAddress;
-    UserContactCommandToUserContact userContactCommandToUserContact;
+    private AccountCommandToAccount accountCommandToAccount;
+    private UserAddressCommandToUserAddress userAddressCommandToUserAddress;
+    private UserContactCommandToUserContact userContactCommandToUserContact;
 
     public UserCommandToUser(AccountCommandToAccount accountCommandToAccount, UserAddressCommandToUserAddress userAddressCommandToUserAddress, UserContactCommandToUserContact userContactCommandToUserContact) {
         this.accountCommandToAccount = accountCommandToAccount;

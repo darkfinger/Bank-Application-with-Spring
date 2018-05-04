@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class TransactionsCommandToTransaction implements Converter<TransactionsCommand, Transactions> {
 
-    AccountCommandToAccount accountCommandToAccount;
+   private AccountCommandToAccount accountCommandToAccount;
 
     public TransactionsCommandToTransaction(AccountCommandToAccount accountCommandToAccount) {
         this.accountCommandToAccount = accountCommandToAccount;

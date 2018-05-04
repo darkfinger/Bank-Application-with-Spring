@@ -24,10 +24,10 @@ public class DevBootstrap implements ApplicationListener<ContextRefreshedEvent> 
     @Override
     public void onApplicationEvent(ContextRefreshedEvent event) {
         userAdminService.saveAdmin(initAdmin());
-        userService.saveUser(init());
+        userService.saveUser(initUser());
     }
 
-    private UserCommand init(){
+    private UserCommand initUser(){
         //setting Address
         UserAddressCommand userAddressCommand=new UserAddressCommand();
         userAddressCommand.setCountry("Canada");
@@ -39,14 +39,14 @@ public class DevBootstrap implements ApplicationListener<ContextRefreshedEvent> 
 
         //Setting the contact
         UserContactCommand userContactCommand= new UserContactCommand();
-        userContactCommand.setContactNumber(new Long("5149699495"));
+        userContactCommand.setContactNumber(5149699495L);
         userContactCommand.setTypeContact(TypeContact.DOMICILE);
 
         //setting an Account
         AccountCommand accountCommand=new AccountCommand();
-        accountCommand.setAccountNo(new Long(123456789));
+        accountCommand.setAccountNo(123456789L);
         accountCommand.setAccountType(AccountType.CHECKING);
-        accountCommand.setBalance(new Float(100));
+        accountCommand.setBalance(100F);
 
         //setting an user
         UserCommand user1=new UserCommand();
