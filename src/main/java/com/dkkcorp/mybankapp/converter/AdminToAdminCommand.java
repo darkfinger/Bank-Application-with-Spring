@@ -1,7 +1,7 @@
 package com.dkkcorp.mybankapp.converter;
 
-import com.dkkcorp.mybankapp.command.UserAdminCommand;
-import com.dkkcorp.mybankapp.domain.UserAdmin;
+import com.dkkcorp.mybankapp.command.AdminCommand;
+import com.dkkcorp.mybankapp.domain.Admin;
 import lombok.Synchronized;
 import org.springframework.lang.Nullable;
 import lombok.AllArgsConstructor;
@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 @AllArgsConstructor
 @NoArgsConstructor
 @Component
-public class UserAdminToUserAdminCommand implements Converter<UserAdmin,UserAdminCommand> {
+public class AdminToAdminCommand implements Converter<Admin,AdminCommand> {
 
     AccountToAccountCommand accountToAccountCommand;
     UserAddressToUserAddressCommand userAddressToUserAddressCommand;
@@ -21,13 +21,16 @@ public class UserAdminToUserAdminCommand implements Converter<UserAdmin,UserAdmi
     @Nullable
     @Synchronized
     @Override
-    public UserAdminCommand convert(UserAdmin source) {
+    public AdminCommand convert(Admin source) {
         if(source==null){
             return null;
         }
-        final UserAdminCommand userAdminCommand=new UserAdminCommand();
-        userAdminCommand.setAdminPassword(source.getAdminPassword());
-        userAdminCommand.setPosition(source.getPosition());
-        return userAdminCommand;
+        final AdminCommand adminCommand =new AdminCommand();
+        adminCommand.setAdminPassword(source.getAdminPassword());
+        adminCommand.setPosition(source.getPosition());
+        adminCommand.setId(source.getId());
+        adminCommand.setAdminEmail(source.getAdminEmail());
+        adminCommand.setLastLogin(source.getLastLogin());
+        return adminCommand;
     }
 }
