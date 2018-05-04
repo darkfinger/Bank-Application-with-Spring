@@ -1,6 +1,8 @@
 package com.dkkcorp.mybankapp;
 
 import com.dkkcorp.mybankapp.command.*;
+import com.dkkcorp.mybankapp.domain.User;
+import com.dkkcorp.mybankapp.domain.UserAdmin;
 import com.dkkcorp.mybankapp.domain.enums.AccountType;
 import com.dkkcorp.mybankapp.domain.enums.Positions;
 import com.dkkcorp.mybankapp.domain.enums.TypeContact;
@@ -36,9 +38,7 @@ public class DevBootstrap implements ApplicationListener<ContextRefreshedEvent> 
     @Override
     public void onApplicationEvent(ContextRefreshedEvent event) {
         UserAdminCommand userCommand=init();
-        System.out.println("Return of ini : "+userCommand.getAccount()+"*******************************************************************");
         UserCommand userSaved =userAdminService.saveAdmin(userCommand);
-        System.out.println(userSaved.getAccount()+"*******************************************************************");
     }
 
     private UserAdminCommand init(){
