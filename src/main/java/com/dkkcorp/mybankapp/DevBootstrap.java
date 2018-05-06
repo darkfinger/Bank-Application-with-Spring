@@ -27,6 +27,11 @@ public class DevBootstrap implements ApplicationListener<ContextRefreshedEvent> 
         userService.saveUser(initUser());
     }
 
+    public void tryIt() {
+        userAdminService.saveAdmin(initAdmin());
+        userService.saveUser(initUser());
+    }
+
     private UserCommand initUser(){
         //setting Address
         UserAddressCommand userAddressCommand=new UserAddressCommand();

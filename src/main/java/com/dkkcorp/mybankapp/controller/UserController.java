@@ -6,9 +6,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class UserController {
 
-    @GetMapping("/user/{id}/")
+    @GetMapping("/user/{id}")
     public String userHome(){
 
-        return "/admin/index";
+        return "/user/index";
     }
 }
