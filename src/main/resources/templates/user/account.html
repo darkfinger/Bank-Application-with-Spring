@@ -12,7 +12,7 @@
 
 <body>
 <nav class="navbar navbar-expand-md navbar-warning bg-warning fixed-top">
-    <a class="navbar-brand" href="#">Summary</a>
+    <a class="navbar-brand" href="#" th:href="@{'/user/'+${user.getId()}+'/'}">Summary</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
             aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -21,7 +21,7 @@
     <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-                <a class="nav-link" href="#">My Profile</a>
+                <a class="nav-link" href="#" th:href="@{'/user/'+${user.getId()}+'/myAccount'}">My Profile</a>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true"
@@ -36,12 +36,11 @@
 
 <main role="main" class="container">
     <div class="starter-template">
-        <h1>Your Account summary</h1>
+        <h1 th:text="${'Summary of Account '+account.accountNo}">Your Account summary</h1>
         <div class="card-deck" >
-            <div class="card" th:each="account : ${account}">
+            <div class="card">
                 <div class="card-body">
-                    <H5 class="card-header" th:text="${'Account NO : '+account.accountNo}">Account No: </h5>
-                    <!--<h5 class="card-title" th:text="${'Account NO : '+account.accountNo}"></h5>-->
+                    <h5 class="card-title">Status</h5>
                     <div class="row">
                         <div class="col-lg-4">
                             Type
@@ -56,63 +55,27 @@
                             -----------
                         </div>
                     </div>
-                    <p class="card-text">
-                        <small class="text-muted"><a href="#" th:href="@{'/user/'+${account.getUserId()}+'/'+${account.getAccountNo()}+'/accountDetails'}">More details</a></small>
-                    </p>
                 </div>
             </div>
-            <div class="card" th:remove="all">
+            <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">Account No: </h5>
-                    <p class="card-text">details.</p>
+                    <h5 class="card-title">Transactions</h5>
                     <div class="row">
                         <div class="col-lg-4">
                             Type
                         </div>
-                        <div class="col-lg-8">
+                        <div class="col-lg-8" th:text="${account.accountType}">
                             -----------
                         </div>
                         <div class="col-lg-4">
                             Balance
                         </div>
-                        <div class="col-lg-8">
+                        <div class="col-lg-8" th:text="${account.balance}">
                             -----------
                         </div>
                     </div>
-                    <p class="card-text">
-                        <small class="text-muted">Last updated 3 mins ago</small>
-                    </p>
                 </div>
             </div>
-            <div class="card" th:remove="all">
-                <div class="card-body">
-                    <h5 class="card-title">Account No: </h5>
-                    <p class="card-text">details.</p>
-                    <div class="row">
-                        <div class="col-lg-4">
-                            Type
-                        </div>
-                        <div class="col-lg-8">
-                            -----------
-                        </div>
-                        <div class="col-lg-4">
-                            Balance
-                        </div>
-                        <div class="col-lg-8">
-                            -----------
-                        </div>
-                    </div>
-                    <p class="card-text">
-                        <small class="text-muted">Last updated 3 mins ago</small>
-                    </p>
-                </div>
-            </div>
-            <!--<div class="card bg-light mb-3" style="max-width: 18rem;">-->
-            <!--<div class="card-header">Saving</div>-->
-            <!--<div class="card-body">-->
-            <!--<p class="card-text">-->
-            <!--s-->
-            <!--</p>-->
 
         </div>
     </div>

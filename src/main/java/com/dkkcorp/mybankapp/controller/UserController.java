@@ -30,4 +30,8 @@ public class UserController {
         model.addAttribute("account", accountCommandArrayList);
         return "/user/index";
     }
+    @GetMapping("/user/{id}/myAccount")
+    public String userDetail(@PathVariable String id,Model model){
+        return "/user/profile";
+    }
 }
