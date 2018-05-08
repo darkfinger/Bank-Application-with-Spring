@@ -7,30 +7,28 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
           th:href="@{/webjars/bootstrap/4.1.0/css/bootstrap.min.css}"/>
     <!--Local css-->
-    <link href="/css/signin.css" type="text/css" rel="stylesheet"/>
+    <link href="/css/bodytemplate.css" type="text/css" rel="stylesheet"/>
 </head>
 
 <body>
-
-<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-    <a class="navbar-brand" href="#">Navbar</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+<nav class="navbar navbar-expand-md navbar-warning bg-warning fixed-top">
+    <a class="navbar-brand" href="#">Summary</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
+            aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
 
     <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            <li class="nav-item">
+                <a class="nav-link" href="#">My Accounts</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Link</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link disabled" href="#">Disabled</a>
+                <a class="nav-link" href="#">My Profile</a>
             </li>
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+                <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true"
+                   aria-expanded="false">Dropdown</a>
                 <div class="dropdown-menu" aria-labelledby="dropdown01">
                     <a class="dropdown-item" href="#">Action</a>
                     <a class="dropdown-item" href="#">Another action</a>
@@ -38,20 +36,92 @@
                 </div>
             </li>
         </ul>
-        <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        </form>
     </div>
 </nav>
 
 <main role="main" class="container">
 
     <div class="starter-template">
-        <h1>Bootstrap starter template</h1>
-        <p class="lead">Use this document as a way to quickly start any new project.<br> All you get is this text and a mostly barebones HTML document.</p>
-    </div>
+        <h1>Your Account summary</h1>
+        <div class="card-deck" >
+            <div class="card" th:each="account : ${account}">
+                <div class="card-body">
+                    <H5 class="card-header" th:text="${'Account NO : '+account.accountNo}">Account No: </h5>
+                    <!--<h5 class="card-title" th:text="${'Account NO : '+account.accountNo}"></h5>-->
+                    <div class="row">
+                        <div class="col-lg-4">
+                            Type
+                        </div>
+                        <div class="col-lg-8" th:text="${account.accountType}">
+                            -----------
+                        </div>
+                        <div class="col-lg-4">
+                            Balance
+                        </div>
+                        <div class="col-lg-8" th:text="${account.balance}">
+                            -----------
+                        </div>
+                    </div>
+                    <p class="card-text">
+                        <small class="text-muted">Last updated 3 mins ago</small>
+                    </p>
+                </div>
+            </div>
+            <div class="card" th:remove="all">
+                <div class="card-body">
+                    <h5 class="card-title">Account No: </h5>
+                    <p class="card-text">details.</p>
+                    <div class="row">
+                        <div class="col-lg-4">
+                            Type
+                        </div>
+                        <div class="col-lg-8">
+                            -----------
+                        </div>
+                        <div class="col-lg-4">
+                            Balance
+                        </div>
+                        <div class="col-lg-8">
+                            -----------
+                        </div>
+                    </div>
+                    <p class="card-text">
+                        <small class="text-muted">Last updated 3 mins ago</small>
+                    </p>
+                </div>
+            </div>
+            <div class="card" th:remove="all">
+                <div class="card-body">
+                    <h5 class="card-title">Account No: </h5>
+                    <p class="card-text">details.</p>
+                    <div class="row">
+                        <div class="col-lg-4">
+                            Type
+                        </div>
+                        <div class="col-lg-8">
+                            -----------
+                        </div>
+                        <div class="col-lg-4">
+                            Balance
+                        </div>
+                        <div class="col-lg-8">
+                            -----------
+                        </div>
+                    </div>
+                    <p class="card-text">
+                        <small class="text-muted">Last updated 3 mins ago</small>
+                    </p>
+                </div>
+            </div>
+            <!--<div class="card bg-light mb-3" style="max-width: 18rem;">-->
+            <!--<div class="card-header">Saving</div>-->
+            <!--<div class="card-body">-->
+            <!--<p class="card-text">-->
+            <!--s-->
+            <!--</p>-->
 
+        </div>
+    </div>
 </main><!-- /.container -->
 
 <!-- Bootstrap core JavaScript

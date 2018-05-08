@@ -1,12 +1,15 @@
 package com.dkkcorp.mybankapp.service;
 
 import com.dkkcorp.mybankapp.command.AccountCommand;
-import com.dkkcorp.mybankapp.domain.Account;
 
-import java.util.Optional;
+import java.util.List;
 
 public interface AccountService {
 
-    Account saveAccount(AccountCommand accountCommand);
+    AccountCommand findAccount(Long id);
+    List<AccountCommand> findByUserId(Long id);
+    List<AccountCommand> findAllAccount();
+    AccountCommand saveAccount(AccountCommand accountCommand);
+    void deleteAccount(Long id);
 
 }
