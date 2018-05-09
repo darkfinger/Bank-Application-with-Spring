@@ -28,7 +28,7 @@ public class UserServiceImpl implements UserService {
     public UserCommand findUser(Long id) {
         Optional<User> userOptional=userRepository.findById(id);
         if(!userOptional.isPresent()){
-            throw new RuntimeException("No user found with id : "+id);
+            return null;
         }
         return userToUserCommand.convert(userOptional.get());
     }
@@ -38,7 +38,7 @@ public class UserServiceImpl implements UserService {
         List<UserCommand> listUser=new ArrayList<>();
         userRepository.findAll().iterator().forEachRemaining(user -> listUser.add(userToUserCommand.convert(user)));
         if ((listUser.isEmpty())){
-            throw new RuntimeException("No user found ");
+            return null;
         }
         return listUser;
     }

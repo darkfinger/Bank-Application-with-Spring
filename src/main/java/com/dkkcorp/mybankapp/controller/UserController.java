@@ -1,6 +1,7 @@
 package com.dkkcorp.mybankapp.controller;
 
 import com.dkkcorp.mybankapp.command.AccountCommand;
+import com.dkkcorp.mybankapp.command.UserCommand;
 import com.dkkcorp.mybankapp.domain.Account;
 import com.dkkcorp.mybankapp.service.AccountService;
 import com.dkkcorp.mybankapp.service.UserService;
@@ -25,8 +26,10 @@ public class UserController {
 
     @GetMapping("/user/{id}")
     public String userHome(@PathVariable String id, Model model) {
-        List<AccountCommand> accountCommandArrayList = new ArrayList<>();
+        List<AccountCommand> accountCommandArrayList;
         accountCommandArrayList = accountService.findByUserId(Long.valueOf(id));
+        UserCommand userCommand=userService.findUser(Long.valueOf(id));
+        model.addAttribute("user",userCommand);
         model.addAttribute("account", accountCommandArrayList);
         return "/user/index";
     }

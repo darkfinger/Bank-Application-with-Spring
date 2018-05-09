@@ -28,7 +28,7 @@ public class UserAdminServiceImpl implements UserAdminService {
         List<AdminCommand> listAdmin=new ArrayList<>();
         adminRepository.findAll().iterator().forEachRemaining(admin -> listAdmin.add(adminToAdminCommand.convert(admin)));
         if(listAdmin.isEmpty()){
-            throw new RuntimeException("No Admin saved yet");
+            return null;
         }
         return listAdmin;
     }
@@ -37,7 +37,7 @@ public class UserAdminServiceImpl implements UserAdminService {
     public AdminCommand findAdmin(Long id) {
         Optional<Admin> userAdminOptional= adminRepository.findById(id);
         if(!userAdminOptional.isPresent()){
-            throw new RuntimeException("No admin found with this id : "+id);
+            return null;
         }
         return adminToAdminCommand.convert(userAdminOptional.get());
     }
@@ -51,6 +51,5 @@ public class UserAdminServiceImpl implements UserAdminService {
 
     @Override
     public void deleteAdmin(Long id) {
-
     }
 }

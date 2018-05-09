@@ -9,12 +9,14 @@ import lombok.Synchronized;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
 
-@AllArgsConstructor
-@NoArgsConstructor
 @Component
 public class TransactionToTransactionCommand implements Converter<Transactions,TransactionsCommand> {
 
     private AccountToAccountCommand accountToAccountCommand;
+
+    public TransactionToTransactionCommand(AccountToAccountCommand accountToAccountCommand) {
+        this.accountToAccountCommand = accountToAccountCommand;
+    }
 
     @Synchronized
     @Nullable
