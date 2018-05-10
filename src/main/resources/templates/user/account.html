@@ -71,13 +71,13 @@
                 <p></p>
                 <div class="row">
                     <div class="col-lg-4">
-                        <a class="btn btn-warning" href="#" th:href="@{'/user/'+${account.getUserId()}+'/'+${account.getAccountNo()}+'/transaction/'+${'deposit'}}">Deposit</a>
+                        <a class="btn btn-warning" href="#" th:href="@{'/user/'+${account.getUserId()}+'/'+${account.getAccountNo()}+'/transaction/deposit'}">Deposit</a>
                     </div>
                     <div class="col-lg-4">
-                        <button type="button" class="btn btn-warning">Withdraw</button>
+                        <a class="btn btn-warning" href="#" th:href="@{'/user/'+${account.getUserId()}+'/'+${account.getAccountNo()}+'/transaction/withdraw'}">Withdraw</a>
                     </div>
                     <div class="col-lg-4">
-                        <button type="button" class="btn btn-warning">Transfer</button>
+                        <a class="btn btn-warning" href="#" th:href="@{'/user/'+${account.getUserId()}+'/'+${account.getAccountNo()}+'/transaction/transfer'}">Transfer</a>
                     </div>
                 </div>
             </div>

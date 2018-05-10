@@ -3,7 +3,6 @@ package com.dkkcorp.mybankapp.controller;
 import com.dkkcorp.mybankapp.command.AccountCommand;
 import com.dkkcorp.mybankapp.command.TransactionsCommand;
 import com.dkkcorp.mybankapp.command.UserCommand;
-import com.dkkcorp.mybankapp.domain.Transactions;
 import com.dkkcorp.mybankapp.service.AccountService;
 import com.dkkcorp.mybankapp.service.TransactionsService;
 import com.dkkcorp.mybankapp.service.UserService;
@@ -38,8 +37,14 @@ public class AccountController {
         return "/user/account";
     }
 
-    @GetMapping("/user/{id}/{accountNo}/transaction/{type}'")
+    @GetMapping("/user/{id}/{accountNo}/transaction/{type}")
     public String makeTransaction(@PathVariable String id, @PathVariable String accountNo, @PathVariable String type, Model model){
+        List<AccountCommand> accountCommand=accountService.findByUserId(Long.valueOf(id));
+        UserCommand userCommand=userService.findUser(Long.valueOf(id));
+        model.addAttribute("user",userCommand);
+        model.addAttribute("account",accountCommand);
+        model.addAttribute("transaction",new TransactionsCommand());
+        model.addAttribute("type",type);
         return "/user/maketransaction";
     }
 }

@@ -35,8 +35,11 @@
 </nav>
 
 <main role="main" class="container">
+    <div class="row">
+            <button type="button" class="btn btn-warning">Return</button>
+    </div>
     <div class="starter-template">
-        <h1 th:text="${'Summary of Account '+account.accountNo}">Your Account summary</h1>
+        <h1 >Make a Transaction </h1>
         <div class="row">
             <div class="col-lg-6">
                 <div class="row">
@@ -46,14 +49,44 @@
                 </div>
                 <p></p>
                 <div class="row">
-                    <div class="col-lg-4">
-                        <button type="button" class="btn btn-warning">Deposit</button>
-                    </div>
-                    <div class="col-lg-4">
-                        <button type="button" class="btn btn-warning">Withdraw</button>
-                    </div>
-                    <div class="col-lg-4">
-                        <button type="button" class="btn btn-warning">Transfer</button>
+                    <div class="col-lg-12 ">
+                        <form th:object="${transaction}" th:action="@{/user/'+${account.getUserId()}+'/'+${account.getAccountNo()}+${type}'/transactionload}"  method="post">
+                            <input type="hidden" th:field="*{id}"/>
+                            <div class="row form-group" th:if="${type}=='withdraw' or ${type}=='transfer'">
+                                <label for="accountOption" class="col-sm-3">From :</label>
+                                <div class="col-sm-9">
+                                    <select id="accountOption" class="form-control" th:field="*{fromAccount}">
+                                        <option th:each="act:${account}"
+                                                th:value="${act.accountNo}"
+                                                th:text="${act.accountNo}">Account</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row form-group" th:if="${type}=='deposit'">
+                                <label for="accountDestination" class="col-sm-3">To :</label>
+                                <div class="col-sm-9">
+                                    <select id="accountDestination" class="form-control" th:field="*{toAccount}">
+                                        <option th:each="act:${account}"
+                                                th:value="${act.accountNo}"
+                                                th:text="${act.accountNo}">Account</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row form-group" th:if="${type}=='transfer'">
+                                <label for="accountDestination2" class="col-sm-3">To :</label>
+                                <div class="col-sm-9">
+                                    <input type="text" id="accountDestination2" class="form-control" th:field="*{toAccount}"/>
+                                </div>
+                            </div>
+                            <div class="row form-group" >
+                                <label for="amountToSend" class="col-sm-3">Amount :</label>
+                                <div class="col-sm-9">
+                                    <input type="text" id="amountToSend" class="form-control" th:field="*{amount}"/>
+                                </div>
+                            </div>
+
+                            <button type="button" class="btn btn-warning">Confirm</button>
+                        </form>
                     </div>
                 </div>
             </div>
