@@ -98,8 +98,10 @@
                             <tbody>
                             <tr th:each="transaction : ${transaction}">
                                 <th scope="row">1</th>
-                                <td th:text="${transaction.getFromAccount().getAccountNo()}">Mark</td>
-                                <td th:text="${transaction.getToAccount().getAccountNo()}">Otto</td>
+                                <td th:if="${transaction.getFromAccount()}" th:text="${transaction.getFromAccount().getAccountNo()}">Mark</td>
+                                <td th:unless="${transaction.getFromAccount()}" th:text="'Deposit'">Mark</td>
+                                <td th:if="${transaction.getToAccount()}" th:text="${transaction.getToAccount().getAccountNo()}">Otto</td>
+                                <td th:unless="${transaction.getToAccount()}" th:text="'Withdrawal'">Otto</td>
                                 <td th:text="${transaction.getAmount()}">@mdo</td>
                                 <td th:text="${transaction.getDateOfTransaction()}">@mdo</td>
                             </tr>
