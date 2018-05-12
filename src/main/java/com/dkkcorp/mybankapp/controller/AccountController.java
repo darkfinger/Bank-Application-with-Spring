@@ -40,9 +40,11 @@ public class AccountController {
     @GetMapping("/user/{id}/{accountNo}/transaction/{type}")
     public String makeTransaction(@PathVariable String id, @PathVariable String accountNo, @PathVariable String type, Model model){
         List<AccountCommand> accountCommand=accountService.findByUserId(Long.valueOf(id));
+        AccountCommand command=accountService.findAccount(Long.valueOf(accountNo));
         UserCommand userCommand=userService.findUser(Long.valueOf(id));
         model.addAttribute("user",userCommand);
-        model.addAttribute("account",accountCommand);
+        model.addAttribute("accountList",accountCommand);
+        model.addAttribute("account",command);
         model.addAttribute("transaction",new TransactionsCommand());
         model.addAttribute("type",type);
         return "/user/maketransaction";
