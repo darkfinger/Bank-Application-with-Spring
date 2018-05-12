@@ -10,6 +10,7 @@ public interface TransactionsService {
     List<TransactionsCommand> findAllTransact();
     List<TransactionsCommand> findTransactByAccount(Long accountNo);
     List<TransactionsCommand> findTransactByUser(Long userId);
-    TransactionsCommand saveTransact(Long id);
+    TransactionsCommand saveTransact(TransactionsCommand id);
     void deleteTransact(Long id);
+    TransactionsCommand makeTransact(TransactionsCommand transactionsCommand);
 }
