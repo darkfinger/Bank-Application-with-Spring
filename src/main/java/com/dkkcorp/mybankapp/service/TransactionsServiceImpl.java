@@ -85,7 +85,7 @@ public class TransactionsServiceImpl implements TransactionsService {
         AccountCommand accountCommandFrom=new AccountCommand();
         AccountCommand accountCommandTo=new AccountCommand();
         TransactionsCommand transactionsCommand1Saved=new TransactionsCommand();
-        int passCode=0;
+        int passCode=1;
         if(transactionsCommand.getFromAccount()!=null){
             accountCommandFrom=accountService.findAccount(transactionsCommand.getFromAccount().getAccountNo());
             if((accountCommandFrom.getBalance()-transactionsCommand.getAmount())>-1){

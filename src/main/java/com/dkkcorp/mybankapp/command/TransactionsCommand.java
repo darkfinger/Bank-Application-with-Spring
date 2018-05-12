@@ -14,7 +14,7 @@ public class TransactionsCommand {
 
     @Size(min = 8,max = 20)
     private AccountCommand fromAccount;
-    @NotNull
+    //@NotNull
     @Size(min = 8,max = 20)
     private AccountCommand toAccount;
     private Date dateOfTransaction;
