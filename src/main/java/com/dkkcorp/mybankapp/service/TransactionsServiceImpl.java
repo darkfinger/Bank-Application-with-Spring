@@ -50,9 +50,22 @@ public class TransactionsServiceImpl implements TransactionsService {
     public List<TransactionsCommand> findTransactByAccount(Long accountNo) {
         List<TransactionsCommand> list=new ArrayList<>();
         for(TransactionsCommand transactionsCommand:findAllTransact()){
-            if((transactionsCommand.getFromAccount().getAccountNo()==accountNo)||(transactionsCommand.getToAccount().getAccountNo()==accountNo)){
-                list.add(transactionsCommand);
+            if(transactionsCommand.getFromAccount()!=null){
+                if((transactionsCommand.getFromAccount().getAccountNo().equals(accountNo))){
+                    list.add(transactionsCommand);
+                }
+                else  if(transactionsCommand.getToAccount()!=null){
+                    if((transactionsCommand.getToAccount().getAccountNo().equals(accountNo))){
+                        list.add(transactionsCommand);
+                    }
+                }
             }
+            else {
+                if((transactionsCommand.getToAccount().getAccountNo().equals(accountNo))){
+                    list.add(transactionsCommand);
+                }
+            }
+
         }
         return list;
     }

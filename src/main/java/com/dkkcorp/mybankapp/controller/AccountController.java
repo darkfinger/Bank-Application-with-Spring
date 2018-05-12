@@ -30,7 +30,7 @@ public class AccountController {
     public String showAccountDetail(@PathVariable String id,@PathVariable String accountNo, Model model){
         AccountCommand accountCommand=accountService.findAccount(Long.valueOf(accountNo));
         UserCommand userCommand=userService.findUser(Long.valueOf(id));
-        List<TransactionsCommand> transactionsCommandList=transactionsService.findAllTransact();
+        List<TransactionsCommand> transactionsCommandList=transactionsService.findTransactByAccount(Long.valueOf(accountNo));
         model.addAttribute("user",userCommand);
         model.addAttribute("account",accountCommand);
         model.addAttribute("transaction",transactionsCommandList);
