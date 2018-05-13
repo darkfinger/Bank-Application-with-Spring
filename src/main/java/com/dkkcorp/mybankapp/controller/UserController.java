@@ -40,6 +40,7 @@ public class UserController {
         UserCommand userCommand=userService.findUser(Long.valueOf(id));
         model.addAttribute("user",userCommand);
         model.addAttribute("account", accountCommandArrayList);
+        userCommand.getUserContact().iterator().forEachRemaining(userContactCommand -> System.out.println(userContactCommand));
         return "/user/profile";
     }
 }

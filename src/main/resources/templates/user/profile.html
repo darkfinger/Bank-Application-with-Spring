@@ -51,7 +51,7 @@
                     <li class="list-group-item" th:each="address:${user.getUserAddress()}" th:text="${address.number + ' '+address.street + ', '+address.city + ', '+address.country+' '+address.zipCode}">Address</li>
                     <li class="list-group-item" th:text="${'email : '+user.email}">email</li>
                     <li class="list-group-item"
-                        th:each="contact:${user.getUserContact()}"
+                        th:each="contact:${user.userContact}"
                         th:if="${contact}"
                         th:text="${contact.userId}">Phone
                     </li>
