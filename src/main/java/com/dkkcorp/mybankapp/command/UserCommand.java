@@ -50,7 +50,7 @@ public class UserCommand {
         this.getUserAddress().add(userAddress);
         userAddress.setUserId(this.id);
     }
-    public void addAcontact(UserContactCommand userContact){
+    public void addContact(UserContactCommand userContact){
         this.getUserContact().add(userContact);
         userContact.setUserId(this.id);
     }

@@ -1,19 +1,13 @@
 package com.dkkcorp.mybankapp.domain;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 @Entity
 public class User {
 
@@ -43,7 +37,7 @@ public class User {
         this.getUserAddress().add(userAddress);
         userAddress.setUser(this);
     }
-    public void addAcontact(UserContact userContact){
+    public void addContact(UserContact userContact){
         this.getUserContact().add(userContact);
         userContact.setUser(this);
     }

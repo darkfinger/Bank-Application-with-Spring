@@ -36,7 +36,7 @@
 
 <main role="main" class="container">
     <div class="row">
-            <button type="button" class="btn btn-warning">Return</button>
+        <a class="btn btn-warning" href="#" th:href="@{'/user/'+${account.getUserId()}+'/'+${account.getAccountNo()}+'/accountDetails'}">Return</a>
     </div>
     <div class="starter-template">
         <h1 >Make a Transaction </h1>
