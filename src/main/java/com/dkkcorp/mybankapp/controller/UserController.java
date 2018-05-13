@@ -35,6 +35,11 @@ public class UserController {
     }
     @GetMapping("/user/{id}/myAccount")
     public String userDetail(@PathVariable String id,Model model){
+        List<AccountCommand> accountCommandArrayList;
+        accountCommandArrayList = accountService.findByUserId(Long.valueOf(id));
+        UserCommand userCommand=userService.findUser(Long.valueOf(id));
+        model.addAttribute("user",userCommand);
+        model.addAttribute("account", accountCommandArrayList);
         return "/user/profile";
     }
 }
