@@ -42,19 +42,24 @@
     <div CLASS="row">
         <div class="col-lg-4">
             <div class="card" style="width: 18rem;">
-                <img class="card-img-top" src="../../static/img/MyBankprofile.png" alt="my bank profile image ">
+                <img class="card-img-top" src="templates/user/MyBankprofile.png" alt="my bank profile image ">
                 <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <h5 class="card-title" th:text="${user.getFirstName() + ' ' + user.getLastName()}">Name</h5>
+                    <p class="card-text"></p>
                 </div>
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item">Cras justo odio</li>
-                    <li class="list-group-item">Dapibus ac facilisis in</li>
-                    <li class="list-group-item">Vestibulum at eros</li>
+                    <li class="list-group-item" th:each="address:${user.getUserAddress()}" th:text="${address.number + ' '+address.street + ', '+address.city + ', '+address.country+' '+address.zipCode}">Address</li>
+                    <li class="list-group-item" th:text="${'email : '+user.email}">email</li>
+                    <li class="list-group-item"
+                        th:each="contact:${user.getUserContact()}"
+                        th:if="${contact}"
+                        th:text="${contact.userId}">Phone
+                    </li>
+                    <li class="list-group-item" th:text="${'DOB : '+user.dateOfBirth}">email</li>
+                    <li class="list-group-item" th:text="${'Since : '+user.dateOfSubscription}">email</li>
                 </ul>
                 <div class="card-body">
-                    <a href="#" class="card-link">Card link</a>
-                    <a href="#" class="card-link">Another link</a>
+                    <a href="#" class="card-link">Edit</a>
                 </div>
             </div>
         </div>

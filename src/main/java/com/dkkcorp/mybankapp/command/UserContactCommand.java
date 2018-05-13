@@ -12,6 +12,6 @@ public class UserContactCommand {
     private Long id;
     private TypeContact typeContact;
     @Size(max = 15)
-    private Long ContactNumber;
+    private Long contactNumber;
     private Long userId;
 }
