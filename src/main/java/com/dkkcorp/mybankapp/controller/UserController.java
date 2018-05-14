@@ -8,7 +8,9 @@ import com.dkkcorp.mybankapp.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,6 +41,19 @@ public class UserController {
         accountCommandArrayList = accountService.findByUserId(Long.valueOf(id));
         UserCommand userCommand=userService.findUser(Long.valueOf(id));
         model.addAttribute("user",userCommand);
+        model.addAttribute("account", accountCommandArrayList);
+        return "/user/profile";
+    }
+    @PostMapping("/user/{id}/myAccount/editprofile")
+    public  String editProfile(@PathVariable String id,@ModelAttribute UserCommand user, Model model){
+        List<AccountCommand> accountCommandArrayList;
+        accountCommandArrayList = accountService.findByUserId(Long.valueOf(id));
+        UserCommand userCommand=userService.findUser(Long.valueOf(id));
+        userCommand.setFirstName(user.getFirstName());
+        userCommand.setLastName(user.getLastName());
+        userCommand.setEmail(user.getEmail());
+        UserCommand userSaved=userService.saveUser(userCommand);
+        model.addAttribute("user",userSaved);
         model.addAttribute("account", accountCommandArrayList);
         return "/user/profile";
     }

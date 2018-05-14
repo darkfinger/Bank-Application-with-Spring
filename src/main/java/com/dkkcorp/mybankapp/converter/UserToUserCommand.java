@@ -1,7 +1,9 @@
 package com.dkkcorp.mybankapp.converter;
 
 import com.dkkcorp.mybankapp.command.UserCommand;
+import com.dkkcorp.mybankapp.command.UserContactCommand;
 import com.dkkcorp.mybankapp.domain.User;
+import com.dkkcorp.mybankapp.domain.UserContact;
 import org.springframework.lang.Nullable;
 import lombok.Synchronized;
 import org.springframework.core.convert.converter.Converter;
@@ -36,10 +38,9 @@ public class UserToUserCommand implements Converter<User,UserCommand> {
         userCommand.setPin(source.getPin());
         userCommand.setDateOfBirth(source.getDateOfBirth());
         userCommand.setDateOfSubscription(source.getDateOfSubscription());
-        source.getAccount().iterator().forEachRemaining(accountCommand -> userCommand.getAccount().add(accountToAccountCommand.convert(accountCommand)));
-        source.getUserAddress().iterator().forEachRemaining(userAddressCommand -> userCommand.getUserAddress().add(userAddressToUserAddressCommand.convert(userAddressCommand)));
-        source.getUserContact().iterator().forEachRemaining(userContactCommand -> userCommand.getUserContact().add(userContactToUserContactCommand.convert(userContactCommand)));
-
+        source.getAccount().iterator().forEachRemaining(account -> userCommand.getAccount().add(accountToAccountCommand.convert(account)));
+        source.getUserAddress().iterator().forEachRemaining(userAddress -> userCommand.getUserAddress().add(userAddressToUserAddressCommand.convert(userAddress)));
+        source.getUserContact().iterator().forEachRemaining(userContact -> userCommand.addContact(userContactToUserContactCommand.convert(userContact)));
         return userCommand;
     }
 }
