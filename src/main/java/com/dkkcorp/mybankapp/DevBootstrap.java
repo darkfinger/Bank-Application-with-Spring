@@ -28,8 +28,12 @@ public class DevBootstrap implements ApplicationListener<ContextRefreshedEvent> 
     }
 
     public void tryIt() {
-        userAdminService.saveAdmin(initAdmin());
-        userService.saveUser(initUser());
+//        userAdminService.saveAdmin(initAdmin());
+//        UserCommand userCommand=initUser();
+//        System.out.println(userCommand.getUserContact().get(0).getContactNumber()+"before saved **************************************************************");
+//        userCommand=userService.saveUser(userCommand);
+//        System.out.println(userCommand.getUserContact().get(0).getContactNumber()+"after saved **************************************************************");
+
     }
 
     private UserCommand initUser(){

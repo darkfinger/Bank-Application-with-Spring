@@ -20,7 +20,7 @@ public class UserContactToUserContactCommand implements Converter<UserContact,Us
         userContactCommand.setContactNumber(source.getContactNumber());
         userContactCommand.setId(source.getId());
         userContactCommand.setTypeContact(source.getTypeContact());
-        userContactCommand.setId(source.getUser().getId());
-        return null;
+        userContactCommand.setUserId(source.getUser().getId());
+        return userContactCommand;
     }
 }

@@ -48,22 +48,52 @@
                     <p class="card-text"></p>
                 </div>
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item" th:each="address:${user.getUserAddress()}" th:text="${address.number + ' '+address.street + ', '+address.city + ', '+address.country+' '+address.zipCode}">Address</li>
+                    <li class="list-group-item" th:each="address:${user.getUserAddress()}"
+                        th:text="${address.number + ' '+address.street + ', '+address.city + ', '+address.country+' '+address.zipCode}">
+                        Address
+                    </li>
                     <li class="list-group-item" th:text="${'email : '+user.email}">email</li>
                     <li class="list-group-item"
                         th:each="contact:${user.userContact}"
                         th:if="${contact}"
-                        th:text="${contact.userId}">Phone
+                        th:text="${'tel '+contact.typeContact +' : '+contact.contactNumber}">Phone
                     </li>
                     <li class="list-group-item" th:text="${'DOB : '+user.dateOfBirth}">email</li>
                     <li class="list-group-item" th:text="${'Since : '+user.dateOfSubscription}">email</li>
                 </ul>
+                <!--<div class="card-body">-->
+                    <!--<a href="#" class="card-link">Edit</a>-->
+                <!--</div>-->
+            </div>
+        </div>
+        <div class="col-lg-8">
+            <div class="card bg-light ">
+                <div class="card-header bg-warning">Edit Profile</div>
                 <div class="card-body">
-                    <a href="#" class="card-link">Edit</a>
+                    <form th:object="${user}" th:action="@{'/user/'+${user.getId()}+'/myAccount/editprofile'}"
+                          method="post">
+                        <div class="row form-group">
+                            <input type="hidden" th:field="*{id}"/>
+                            <label for="firstName" class="col-sm-3">First Name :</label>
+                            <div class="col-sm-9" style="padding-bottom: 1em;">
+                                <input type="text" id="firstName" class="form-control" th:field="*{firstName}"/>
+                            </div >
+
+                            <label for="lastName" class="col-sm-3">Last Name :</label>
+                            <div class="col-sm-9" style="padding-bottom: 1em;">
+                                <input type="text" id="lastName" class="form-control" th:field="*{lastName}"/>
+                            </div>
+
+                            <label for="email" class="col-sm-3">Email</label>
+                            <div class="col-sm-9" style="padding-bottom: 1em;">
+                                <input type="text" id="email" class="form-control" th:field="*{email}"/>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-warning">Save</button>
+                    </form>
                 </div>
             </div>
         </div>
-        <div class="col-lg-8">corp</div>
     </div>
 </main><!-- /.container -->
 
