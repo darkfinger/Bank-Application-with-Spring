@@ -45,19 +45,15 @@
                     <th scope="row" th:text="${user.id}">1</th>
                     <td th:text="${user.getFirstName()}">Mark</td>
                     <td th:text="${user.getLastName()}">Otto</td>
-                    <td><a href="#">@mdo</a></td>
+                    <td><a href="#" th:href="@{'/bank-admin/'+${admin.id}+'/viewuser/'+${user.id}}">View Details</a></td>
+                    <td><a href="#" th:href="@{'/bank-admin/'+${admin.id}+'/updateuser/'+${user.id}}">Update Info</a></td>
+                    <td><a href="#" th:href="@{'/bank-admin/'+${admin.id}+'/delete/'+${user.id}}">Delete user</a></td>
                 </tr>
-                <tr>
+                <tr th:remove="all">
                     <th scope="row">2</th>
                     <td>Jacob</td>
                     <td>Thornton</td>
                     <td>@fat</td>
-                </tr>
-                <tr>
-                    <th scope="row">3</th>
-                    <td>Larry</td>
-                    <td>the Bird</td>
-                    <td>@twitter</td>
                 </tr>
                 </tbody>
             </table>
@@ -69,7 +65,6 @@
                     <th colspan="7" style="text-align: center;">List of all Account</th>
                 </tr>
                 <tr>
-                    <th scope="col">#</th>
                     <th scope="col">Account No</th>
                     <th scope="col">Owner</th>
                     <th scope="col">Balance</th>
@@ -79,23 +74,19 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <th scope="row">1</th>
+                <tr th:each="account : ${accountList}">
+                    <th scope="row" th:text="${account.accountNo}">1</th>
                     <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
+                    <td th:text="${account.getBalance()}">Otto</td>
+                    <td><a href="#" th:href="@{'/bank-admin/'+${admin.id}+'/viewacount/'+${account.accountNo}}">View Details</a></td>
+                    <td><a href="#" th:href="@{'/bank-admin/'+${admin.id}+'/updatac/'+${account.accountNo}}">Update Info</a></td>
+                    <td><a href="#" th:href="@{'/bank-admin/'+${admin.id}+'/delete/'+${account.accountNo}}">Close Account</a></td>
                 </tr>
-                <tr>
+                <tr th:remove="all">
                     <th scope="row">2</th>
                     <td>Jacob</td>
                     <td>Thornton</td>
                     <td>@fat</td>
-                </tr>
-                <tr>
-                    <th scope="row">3</th>
-                    <td>Larry</td>
-                    <td>the Bird</td>
-                    <td>@twitter</td>
                 </tr>
                 </tbody>
             </table>
