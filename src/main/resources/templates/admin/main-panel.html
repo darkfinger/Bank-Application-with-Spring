@@ -41,11 +41,11 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
+                <tr th:each="user : ${userList}">
+                    <th scope="row" th:text="${user.id}">1</th>
+                    <td th:text="${user.getFirstName()}">Mark</td>
+                    <td th:text="${user.getLastName()}">Otto</td>
+                    <td><a href="#">@mdo</a></td>
                 </tr>
                 <tr>
                     <th scope="row">2</th>
