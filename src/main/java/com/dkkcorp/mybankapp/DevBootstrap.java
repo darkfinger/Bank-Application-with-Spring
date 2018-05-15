@@ -14,21 +14,21 @@ import java.util.Date;
 public class DevBootstrap implements ApplicationListener<ContextRefreshedEvent> {
 
     private UserService userService;
-    private UserAdminService userAdminService;
+    private AdminService adminService;
 
-    public DevBootstrap(UserService userService, UserAdminService userAdminService) {
+    public DevBootstrap(UserService userService, AdminService adminService) {
         this.userService = userService;
-        this.userAdminService = userAdminService;
+        this.adminService = adminService;
     }
 
     @Override
     public void onApplicationEvent(ContextRefreshedEvent event) {
-        userAdminService.saveAdmin(initAdmin());
+        adminService.saveAdmin(initAdmin());
         userService.saveUser(initUser());
     }
 
     public void tryIt() {
-//        userAdminService.saveAdmin(initAdmin());
+//        adminService.saveAdmin(initAdmin());
 //        UserCommand userCommand=initUser();
 //        System.out.println(userCommand.getUserContact().get(0).getContactNumber()+"before saved **************************************************************");
 //        userCommand=userService.saveUser(userCommand);

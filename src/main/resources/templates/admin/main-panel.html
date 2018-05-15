@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>My Bank</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
+          th:href="@{/webjars/bootstrap/4.1.0/css/bootstrap.min.css}"/>
+    <!--Local css-->
+    <link href="/css/bodytemplate.css" type="text/css" rel="stylesheet"/>
+</head>
+
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-auto">
+            <a class="btn btn-warning" href="#">Add a new User</a>
+        </div>
+        <div class="col-sm-auto">
+            <a class="btn btn-warning" href="#">Add an Account</a>
+        </div>
+        <div class="col-sm-auto">
+            <a class="btn btn-warning" href="#">Add an Admin</a>
+        </div>
+    </div>
+    <p></p>
+    <div class="row">
+        <div class="col-sm-6" style="overflow: hidden;">
+            <table class="table">
+                <thead class="thead-light">
+                <tr>
+                    <th colspan="6" style="text-align: center;">List of all users</th>
+                </tr>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">First</th>
+                    <th scope="col">Last</th>
+                    <th scope="col">View</th>
+                    <th scope="col">Update</th>
+                    <th scope="col">Delete</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <th scope="row">1</th>
+                    <td>Mark</td>
+                    <td>Otto</td>
+                    <td>@mdo</td>
+                </tr>
+                <tr>
+                    <th scope="row">2</th>
+                    <td>Jacob</td>
+                    <td>Thornton</td>
+                    <td>@fat</td>
+                </tr>
+                <tr>
+                    <th scope="row">3</th>
+                    <td>Larry</td>
+                    <td>the Bird</td>
+                    <td>@twitter</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-sm-6" style="overflow: hidden;">
+            <table class="table">
+                <thead class="thead-light">
+                <tr>
+                    <th colspan="7" style="text-align: center;">List of all Account</th>
+                </tr>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Account No</th>
+                    <th scope="col">Owner</th>
+                    <th scope="col">Balance</th>
+                    <th scope="col">View</th>
+                    <th scope="col">Update</th>
+                    <th scope="col">Delete</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <th scope="row">1</th>
+                    <td>Mark</td>
+                    <td>Otto</td>
+                    <td>@mdo</td>
+                </tr>
+                <tr>
+                    <th scope="row">2</th>
+                    <td>Jacob</td>
+                    <td>Thornton</td>
+                    <td>@fat</td>
+                </tr>
+                <tr>
+                    <th scope="row">3</th>
+                    <td>Larry</td>
+                    <td>the Bird</td>
+                    <td>@twitter</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

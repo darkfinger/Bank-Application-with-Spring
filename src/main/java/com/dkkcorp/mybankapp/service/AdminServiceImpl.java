@@ -1,9 +1,13 @@
 package com.dkkcorp.mybankapp.service;
 
+import com.dkkcorp.mybankapp.command.AccountCommand;
 import com.dkkcorp.mybankapp.command.AdminCommand;
+import com.dkkcorp.mybankapp.command.TransactionsCommand;
+import com.dkkcorp.mybankapp.command.UserCommand;
 import com.dkkcorp.mybankapp.converter.AdminCommandToAdmin;
 import com.dkkcorp.mybankapp.converter.AdminToAdminCommand;
 import com.dkkcorp.mybankapp.domain.Admin;
+import com.dkkcorp.mybankapp.domain.Transactions;
 import com.dkkcorp.mybankapp.repository.AdminRepository;
 import org.springframework.stereotype.Service;
 
@@ -12,15 +16,23 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class UserAdminServiceImpl implements UserAdminService {
+public class AdminServiceImpl implements AdminService {
     private AdminRepository adminRepository;
     private AdminToAdminCommand adminToAdminCommand;
     private AdminCommandToAdmin adminCommandToAdmin;
+    private UserService userService;
+    private AccountService accountService;
+    private TransactionsService transactionsService;
 
-    public UserAdminServiceImpl(AdminRepository adminRepository, AdminToAdminCommand adminToAdminCommand, AdminCommandToAdmin adminCommandToAdmin) {
+    public AdminServiceImpl(AdminRepository adminRepository, AdminToAdminCommand adminToAdminCommand,
+                            AdminCommandToAdmin adminCommandToAdmin, UserService userService,
+                            AccountService accountService, TransactionsService transactionsService) {
         this.adminRepository = adminRepository;
         this.adminToAdminCommand = adminToAdminCommand;
         this.adminCommandToAdmin = adminCommandToAdmin;
+        this.userService = userService;
+        this.accountService = accountService;
+        this.transactionsService = transactionsService;
     }
 
     @Override
@@ -52,4 +64,18 @@ public class UserAdminServiceImpl implements UserAdminService {
     @Override
     public void deleteAdmin(Long id) {
     }
+
+    @Override
+    public List<UserCommand> findAllUser() {
+        List<UserCommand> listUser=userService.findAllUser();
+        return listUser;
+    }
+
+    @Override
+    public List<AccountCommand> findAllAccount() {
+        List<AccountCommand> accountCommandList=accountService.findAllAccount();
+        return accountCommandList;
+    }
+
+
 }
