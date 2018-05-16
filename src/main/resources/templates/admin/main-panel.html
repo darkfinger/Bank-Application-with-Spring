@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>My Bank</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
+          th:href="@{/webjars/bootstrap/4.1.0/css/bootstrap.min.css}"/>
+    <!--Local css-->
+    <link href="/css/bodytemplate.css" type="text/css" rel="stylesheet"/>
+</head>
+
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-auto">
+            <a class="btn btn-warning" href="#">Add a new User</a>
+        </div>
+        <div class="col-sm-auto">
+            <a class="btn btn-warning" href="#">Add an Account</a>
+        </div>
+        <div class="col-sm-auto">
+            <a class="btn btn-warning" href="#">Add an Admin</a>
+        </div>
+    </div>
+    <p></p>
+    <div class="row">
+        <div class="col-sm-6" style="overflow: hidden;">
+            <table class="table">
+                <thead class="thead-light">
+                <tr>
+                    <th colspan="6" style="text-align: center;">List of all users</th>
+                </tr>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">First</th>
+                    <th scope="col">Last</th>
+                    <th scope="col">View</th>
+                    <th scope="col">Update</th>
+                    <th scope="col">Delete</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="user : ${userList}">
+                    <th scope="row" th:text="${user.id}">1</th>
+                    <td th:text="${user.getFirstName()}">Mark</td>
+                    <td th:text="${user.getLastName()}">Otto</td>
+                    <td><a href="#" th:href="@{'/bank-admin/'+${admin.id}+'/viewuser/'+${user.id}}">View Details</a></td>
+                    <td><a href="#" th:href="@{'/bank-admin/'+${admin.id}+'/updateuser/'+${user.id}}">Update Info</a></td>
+                    <td><a href="#" th:href="@{'/bank-admin/'+${admin.id}+'/delete/'+${user.id}}">Delete user</a></td>
+                </tr>
+                <tr th:remove="all">
+                    <th scope="row">2</th>
+                    <td>Jacob</td>
+                    <td>Thornton</td>
+                    <td>@fat</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-sm-6" style="overflow: hidden;">
+            <table class="table">
+                <thead class="thead-light">
+                <tr>
+                    <th colspan="7" style="text-align: center;">List of all Account</th>
+                </tr>
+                <tr>
+                    <th scope="col">Account No</th>
+                    <th scope="col">Owner</th>
+                    <th scope="col">Balance</th>
+                    <th scope="col">View</th>
+                    <th scope="col">Update</th>
+                    <th scope="col">Delete</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="account : ${accountList}">
+                    <th scope="row" th:text="${account.accountNo}">1</th>
+                    <td>Mark</td>
+                    <td th:text="${account.getBalance()}">Otto</td>
+                    <td><a href="#" th:href="@{'/bank-admin/'+${admin.id}+'/viewacount/'+${account.accountNo}}">View Details</a></td>
+                    <td><a href="#" th:href="@{'/bank-admin/'+${admin.id}+'/updatac/'+${account.accountNo}}">Update Info</a></td>
+                    <td><a href="#" th:href="@{'/bank-admin/'+${admin.id}+'/delete/'+${account.accountNo}}">Close Account</a></td>
+                </tr>
+                <tr th:remove="all">
+                    <th scope="row">2</th>
+                    <td>Jacob</td>
+                    <td>Thornton</td>
+                    <td>@fat</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

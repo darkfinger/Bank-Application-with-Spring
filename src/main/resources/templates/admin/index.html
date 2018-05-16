@@ -1,10 +1,38 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <meta charset="UTF-8"/>
+    <title>Edit Ingredient</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
+          th:href="@{/webjars/bootstrap/4.1.0/css/bootstrap.min.css}"/>
+    <!--Local css-->
+    <link href="/css/signin.css" type="text/css" rel="stylesheet"/>
 </head>
 <body>
+<img class="text-center">
+<!-- Content here -->
+<form class="form-signin text-warning"><a href="/bank-admin/1/dashboard/">Demo</a>
+    <img class="mb-4" src="" alt="" width="72" height="72">
+    <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+    <label for="inputEmail" class="sr-only">Email address</label>
+    <input type="email" id="inputEmail" class="form-control text-warning" placeholder="Email address" required
+           autofocus>
+    <label for="inputPassword" class="sr-only text-warning">Password</label>
+    <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+    <div class="checkbox mb-3">
+        <label>
+            <input type="checkbox" value="remember-me"> Remember me
+        </label>
+    </div>
+    <button class="btn btn-lg bg-warning btn-block" type="submit">Sign in</button>
+    <p class="mt-5 mb-3 text-muted text-warning">&copy; 2018-2019</p>
+</form>
 
+
+<script src="/webjars/jquery/3.3.1-1/jquery.min.js"></script>
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"
+        th:src="@{/webjars/bootstrap/4.1.0/js/bootstrap.min.js}"></script>
 </body>
 </html>
