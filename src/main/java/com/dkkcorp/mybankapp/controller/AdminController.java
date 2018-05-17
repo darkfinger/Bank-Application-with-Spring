@@ -1,5 +1,6 @@
 package com.dkkcorp.mybankapp.controller;
 
+import com.dkkcorp.mybankapp.command.UserCommand;
 import com.dkkcorp.mybankapp.service.AdminService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -25,5 +26,13 @@ public class AdminController {
         model.addAttribute("accountList",adminService.findAllAccount());
         model.addAttribute("userList",adminService.findAllUser());
         return "/admin/main-panel";
+    }
+
+    @GetMapping("/bank-admin/{id}/add-user")
+    public String addUser(@PathVariable String id, Model model){
+        model.addAttribute("admin",adminService.findAdmin(Long.valueOf(id)));
+        model.addAttribute("user",new UserCommand());
+
+        return "/admin/add-user";
     }
 }
