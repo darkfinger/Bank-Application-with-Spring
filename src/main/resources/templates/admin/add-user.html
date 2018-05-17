@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="common/common-header::common-header"/>
+
+<body>
+<main role="main" class="container">
+    <div class="row">
+        <a class="btn btn-warning" href="#" th:href="@{/bank-admin/${id}/dashboard/}">Return</a>
+    </div>
+    <p></p>
+    <div CLASS="row">
+        <div class="col-lg-9">
+            <div class="card bg-light ">
+                <div class="card-header bg-warning">User Registration </div>
+                <div class="card-body">
+                    <form th:object="${user}" th:action="@{'/bank-admin/'+${id}+'/operations'}" method="post">
+                        <div class="row form-group">
+                            <input type="hidden" th:field="*{id}"/>
+                            <label for="firstName" class="col-sm-3">First Name :</label>
+                            <div class="col-sm-9" style="padding-bottom: 1em;">
+                                <input type="text" id="firstName" class="form-control" th:field="*{firstName}"/>
+                            </div >
+
+                            <label for="lastName" class="col-sm-3">Last Name :</label>
+                            <div class="col-sm-9" style="padding-bottom: 1em;">
+                                <input type="text" id="lastName" class="form-control" th:field="*{lastName}"/>
+                            </div>
+
+                            <label for="email" class="col-sm-3">Email</label>
+                            <div class="col-sm-9" style="padding-bottom: 1em;">
+                                <input type="text" id="email" class="form-control" th:field="*{email}"/>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-warning">Save</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</main><!-- /.container -->
+
+<div th:replace="common/common-header::common-footer-script" />
+</body>
+</html>
