@@ -36,7 +36,7 @@ public class UserCommand {
     private Integer pin;
     @NotNull
     @Temporal(TemporalType.DATE)
-    private Date dateOfBirth;
+    private String dateOfBirth;
     @Temporal(TemporalType.DATE)
     private Date dateOfSubscription;
     private List<UserAddressCommand> userAddress=new ArrayList<>();

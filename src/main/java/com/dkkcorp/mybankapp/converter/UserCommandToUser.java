@@ -7,6 +7,10 @@ import org.springframework.core.convert.converter.Converter;
 import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Component;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 @Component
 public class UserCommandToUser implements Converter<UserCommand, User> {
 
@@ -34,7 +38,13 @@ public class UserCommandToUser implements Converter<UserCommand, User> {
         user.setEmail(source.getEmail());
         user.setPassword(source.getPassword());
         user.setPin(source.getPin());
-        user.setDateOfBirth(source.getDateOfBirth());
+        Date date1= null;
+        try {
+            date1 = new SimpleDateFormat("yyyy-dd-MM").parse(source.getDateOfBirth());
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        user.setDateOfBirth(date1);
         user.setDateOfSubscription(source.getDateOfSubscription());
         source.getAccount().forEach(accountCommand -> user.addAccount(accountCommandToAccount.convert(accountCommand)));
         source.getUserAddress().forEach(userAddressCommand -> user.addAddress(userAddressCommandToUserAddress.convert(userAddressCommand)));

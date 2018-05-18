@@ -36,7 +36,7 @@ public class UserToUserCommand implements Converter<User,UserCommand> {
         userCommand.setEmail(source.getEmail());
         userCommand.setPassword(source.getPassword());
         userCommand.setPin(source.getPin());
-        userCommand.setDateOfBirth(source.getDateOfBirth());
+        userCommand.setDateOfBirth(source.getDateOfBirth().toString());
         userCommand.setDateOfSubscription(source.getDateOfSubscription());
         source.getAccount().iterator().forEachRemaining(account -> userCommand.getAccount().add(accountToAccountCommand.convert(account)));
         source.getUserAddress().iterator().forEachRemaining(userAddress -> userCommand.getUserAddress().add(userAddressToUserAddressCommand.convert(userAddress)));

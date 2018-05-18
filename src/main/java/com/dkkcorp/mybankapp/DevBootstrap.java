@@ -65,7 +65,7 @@ public class DevBootstrap implements ApplicationListener<ContextRefreshedEvent> 
         user1.setEmail("dav@gm.com");
         user1.setPassword("123456789");
         user1.setPin(1234);
-        user1.setDateOfBirth(new Date());
+        user1.setDateOfBirth("2004-02-01");
         user1.addAddress(userAddressCommand);
         user1.addContact(userContactCommand);
 
